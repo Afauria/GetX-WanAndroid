@@ -8,19 +8,19 @@ class HomeController extends GetxController{
   final navBarItems = [
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.home),
-      label: '首页',
+      label: 'home'.tr,
     ),
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.cube),
-      label: '体系',
+      label: 'system'.tr,
     ),
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.briefcase),
-      label: '项目',
+      label: 'project'.tr,
     ),
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.person),
-      label: '我的',
+      label: 'mine'.tr,
     ),
   ];
   final subpages = [

@@ -1,3 +1,7 @@
 final Map<String, String> enUS = {
-  "hello": "Hello"
+  "hello": "Hello",
+  "home": "Home",
+  "system": "System",
+  "project": "Project",
+  "mine": "Mine"
 };
