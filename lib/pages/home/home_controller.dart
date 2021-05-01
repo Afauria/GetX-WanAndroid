@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_sample/views/home_view.dart';
+import 'package:getx_sample/views/home/home_view.dart';
+import 'package:getx_sample/views/tree/tree_view.dart';
 
 ///GetController用于存放数据和控制逻辑
 class HomeController extends GetxController{
@@ -25,7 +26,7 @@ class HomeController extends GetxController{
   ];
   final subpages = [
     HomeView(),
-    Container(color: Colors.red),
+    TreeView(),
     Container(color: Colors.green),
     Container(color: Colors.blue),
   ];

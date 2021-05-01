@@ -6,7 +6,7 @@ import 'package:getx_sample/components/space_header.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/banner_data.dart';
 import 'package:getx_sample/routes/app_routes.dart';
-import 'package:getx_sample/views/home_view_controller.dart';
+import 'package:getx_sample/views/home/home_view_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends GetView<HomeViewController> {
@@ -86,7 +86,7 @@ class HomeView extends GetView<HomeViewController> {
                 isTop
                     ? Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: 10.w, vertical: 2.w),
+                            horizontal: 10.w, vertical: 2.h),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(3)),
                           border: Border.all(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:getx_sample/model/ApiService.dart';
 import 'package:getx_sample/routes/app_routes.dart';
 import 'package:getx_sample/translations/AppTranslation.dart';
 
@@ -14,10 +15,17 @@ void main() {
         title: "Application",
         initialRoute: AppPages.PATH_INITIAL,
         getPages: AppPages.routes,
-
+        initialBinding: AppBindings(),
         ///多语言翻译
         translationsKeys: AppTranslation.translations,
       ),
     ),
   );
+}
+
+class AppBindings extends Bindings{
+  @override
+  void dependencies() {
+    Get.lazyPut<ApiService>(() => ApiService());
+  }
 }

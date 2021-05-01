@@ -1,8 +1,8 @@
 
 import 'package:get/get.dart';
-import 'package:getx_sample/model/ApiService.dart';
 import 'package:getx_sample/pages/home/home_controller.dart';
-import 'package:getx_sample/views/home_view_controller.dart';
+import 'package:getx_sample/views/home/home_view_controller.dart';
+import 'package:getx_sample/views/tree/tree_view_controller.dart';
 
 ///Bindings是一个依赖管理器
 ///可以在不同页面间共享实例，而不是在视图中实例化
@@ -13,6 +13,6 @@ class HomeBinding extends Bindings {
     ///通过Get.find可以获取实例
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<HomeViewController>(() => HomeViewController());
-    Get.lazyPut<ApiService>(() => ApiService());
+    Get.lazyPut<TreeViewController>(() => TreeViewController());
   }
 }

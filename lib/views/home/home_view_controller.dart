@@ -8,7 +8,7 @@ class HomeViewController extends GetxController {
   final banners = List<BannerData>.empty(growable: true).obs;
   final articles = List<ArticleData>.empty(growable: true).obs;
   final tops = List<ArticleData>.empty(growable: true).obs;
-  final _bannersProvider = Get.find<ApiService>();
+  final _apiService = Get.find<ApiService>();
   final page = 0.obs;
 
   @override
@@ -20,7 +20,7 @@ class HomeViewController extends GetxController {
   }
 
   void getBanners() {
-    _bannersProvider.getBanners().then((resp) {
+    _apiService.getBanners().then((resp) {
       banners.assignAll(resp.data!);
     }, onError: (e) {
       Get.snackbar("Error", e.toString());
@@ -28,7 +28,7 @@ class HomeViewController extends GetxController {
   }
 
   void getTops() {
-    _bannersProvider.getTops().then((resp) {
+    _apiService.getTops().then((resp) {
       tops.assignAll(resp.data!);
     }, onError: (e) {
       Get.snackbar('ERROR', e.toString(), colorText: Colors.red);
@@ -37,7 +37,7 @@ class HomeViewController extends GetxController {
 
   Future getArticles() async {
     if ((page.value == 0) && (articles.isNotEmpty)) articles.clear();
-    _bannersProvider.getArticles(page.value).then((resp) {
+    _apiService.getArticles(page.value).then((resp) {
       articles.addAll(resp.data!);
       page.value++;
     }, onError: (e) {
