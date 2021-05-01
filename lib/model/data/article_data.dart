@@ -1,6 +1,6 @@
 class ArticleList {
   int? curPage;
-  List<ArticleInfo>? datas;
+  List<ArticleData>? datas;
   int? offset;
   bool? over;
   int? pageCount;
@@ -18,9 +18,9 @@ class ArticleList {
   ArticleList.fromJson(Map<String, dynamic> json) {
     curPage = json['curPage'];
     if (json['datas'] != null) {
-      datas = <ArticleInfo>[];
+      datas = <ArticleData>[];
       json['datas'].forEach((v) {
-        datas!.add(ArticleInfo.fromJson(v));
+        datas!.add(ArticleData.fromJson(v));
       });
     }
     offset = json['offset'];
@@ -45,7 +45,7 @@ class ArticleList {
   }
 }
 
-class ArticleInfo {
+class ArticleData {
   String? apkLink;
   int? audit;
   String? author;
@@ -80,7 +80,7 @@ class ArticleInfo {
   int? visible;
   int? zan;
 
-  ArticleInfo(
+  ArticleData(
       {this.apkLink,
         this.audit,
         this.author,
@@ -115,7 +115,7 @@ class ArticleInfo {
         this.visible,
         this.zan});
 
-  ArticleInfo.fromJson(Map<String, dynamic> json) {
+  ArticleData.fromJson(Map<String, dynamic> json) {
     apkLink = json['apkLink'];
     audit = json['audit'];
     author = json['author'];

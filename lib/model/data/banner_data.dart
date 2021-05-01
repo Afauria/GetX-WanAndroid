@@ -1,5 +1,5 @@
 ///Data数据类：flutter暂时没有类似Gson转对象的框架，使用构造函数fromJson自己解析json
-class BannerInfo {
+class BannerData {
   String? desc;
   int? id;
   String? imagePath;
@@ -10,11 +10,11 @@ class BannerInfo {
   String? url;
 
   //普通构造函数
-  BannerInfo(this.desc, this.id, this.imagePath, this.isVisible, this.order,
+  BannerData(this.desc, this.id, this.imagePath, this.isVisible, this.order,
       this.title, this.type, this.url);
 
   //命名构造函数
-  BannerInfo.fromJson(Map<String, dynamic> json) {
+  BannerData.fromJson(Map<String, dynamic> json) {
     desc = json['desc'];
     id = json['id'];
     imagePath = json['imagePath'];

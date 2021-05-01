@@ -4,8 +4,8 @@ import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/components/space_header.dart';
-import 'package:getx_sample/model/data/article_info.dart';
-import 'package:getx_sample/model/data/banner_info.dart';
+import 'package:getx_sample/model/data/article_data.dart';
+import 'package:getx_sample/model/data/banner_data.dart';
 import 'package:getx_sample/routes/app_routes.dart';
 import 'package:getx_sample/views/controller_home_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +20,7 @@ class HomeView extends GetView<HomeViewController> {
           () => Column(
             children: [
               _buildBanners(controller.banners),
-              _buildArticleList(controller.topList, controller.articleList),
+              _buildArticleList(controller.tops, controller.articles),
             ],
           ),
         ),
@@ -28,7 +28,7 @@ class HomeView extends GetView<HomeViewController> {
     );
   }
 
-  Widget _buildBanners(List<BannerInfo> banners) {
+  Widget _buildBanners(List<BannerData> banners) {
     return SizedBox(
       height: Get.height / 4,
 
@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeViewController> {
     return Expanded(
       child: EasyRefresh(
         onRefresh: controller.reset,
-        onLoad: controller.getArticleList,
+        onLoad: controller.getArticles,
         header: SpaceHeader(),
         child: ListView.separated(
           itemBuilder: (_, i) {
@@ -75,7 +75,7 @@ class HomeView extends GetView<HomeViewController> {
     );
   }
 
-  Widget _buildArticle(int i, ArticleInfo info, bool isTop) => InkWell(
+  Widget _buildArticle(int i, ArticleData info, bool isTop) => InkWell(
         onTap: () {
           Get.toNamed(AppPages.PATH_ARTICLE_DETAIL, arguments: info.link);
         },

@@ -1,8 +1,6 @@
 
 import 'package:get/get.dart';
-import 'package:getx_sample/model/provider/article_provider.dart';
-import 'package:getx_sample/model/provider/banners_provider.dart';
-import 'package:getx_sample/model/provider/top_provider.dart';
+import 'package:getx_sample/model/ApiService.dart';
 import 'package:getx_sample/pages/home/controller_home.dart';
 import 'package:getx_sample/views/controller_home_view.dart';
 
@@ -14,9 +12,7 @@ class HomeBinding extends Bindings {
     ///可以通过[Get.put，Get.lazyPut，Get.putAsync，Get.create]方法注入实例
     ///通过Get.find可以获取实例
     Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<BannersProvider>(() => BannersProvider());
     Get.lazyPut<HomeViewController>(() => HomeViewController());
-    Get.lazyPut<ArticleProvider>(() => ArticleProvider());
-    Get.lazyPut<TopProvider>(() => TopProvider());
+    Get.lazyPut<ApiService>(() => ApiService());
   }
 }
