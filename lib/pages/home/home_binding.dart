@@ -1,8 +1,8 @@
 
 import 'package:get/get.dart';
 import 'package:getx_sample/model/ApiService.dart';
-import 'package:getx_sample/pages/home/controller_home.dart';
-import 'package:getx_sample/views/controller_home_view.dart';
+import 'package:getx_sample/pages/home/home_controller.dart';
+import 'package:getx_sample/views/home_view_controller.dart';
 
 ///Bindings是一个依赖管理器
 ///可以在不同页面间共享实例，而不是在视图中实例化

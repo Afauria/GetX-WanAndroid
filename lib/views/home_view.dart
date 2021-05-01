@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
@@ -7,7 +6,7 @@ import 'package:getx_sample/components/space_header.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/banner_data.dart';
 import 'package:getx_sample/routes/app_routes.dart';
-import 'package:getx_sample/views/controller_home_view.dart';
+import 'package:getx_sample/views/home_view_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeView extends GetView<HomeViewController> {

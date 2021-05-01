@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_sample/views/fragment_home.dart';
+import 'package:getx_sample/views/home_view.dart';
 
 ///GetController用于存放数据和控制逻辑
 class HomeController extends GetxController{

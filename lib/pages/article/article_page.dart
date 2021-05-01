@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:getx_sample/pages/article/controller_article.dart';
+import 'package:getx_sample/pages/article/article_controller.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class PageArticle extends GetView<ArticleController> {
+class ArticlePage extends GetView<ArticleController> {
   final link = Get.arguments;
   @override
   Widget build(_) {
