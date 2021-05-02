@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/views/home/home_view.dart';
+import 'package:getx_sample/views/nav/nav_view.dart';
 import 'package:getx_sample/views/tree/tree_view.dart';
 
 ///GetController用于存放数据和控制逻辑
@@ -17,7 +18,7 @@ class HomeController extends GetxController{
     ),
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.briefcase),
-      label: 'project'.tr,
+      label: 'navigation'.tr,
     ),
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.person),
@@ -27,7 +28,7 @@ class HomeController extends GetxController{
   final subpages = [
     HomeView(),
     TreeView(),
-    Container(color: Colors.green),
+    NavView(),
     Container(color: Colors.blue),
   ];
 }

@@ -5,11 +5,14 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class ArticlePage extends GetView<ArticleController> {
   final link = Get.arguments;
+
   @override
   Widget build(_) {
     return SafeArea(
       child: WebView(
-        onWebViewCreated: (_) => Get.dialog(CupertinoActivityIndicator()),
+        onWebViewCreated: (_) => link != null
+            ? Get.dialog(CupertinoActivityIndicator())
+            : Get.snackbar("Error", "link url is null"),
         onPageStarted: (_) {},
         onPageFinished: (_) => Get.back(),
         initialUrl: link,

@@ -3,5 +3,6 @@ final Map<String, String> enUS = {
   "home": "Home",
   "system": "System",
   "project": "Project",
-  "mine": "Mine"
+  "mine": "Mine",
+  "navigation": "Navigation"
 };

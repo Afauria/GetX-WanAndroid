@@ -2,6 +2,10 @@
 
 GetX sample with wanandroid
 
+**基于GitHub项目学习：https://github.com/fengwensheng/getx_wanandroid.git**
+
+补充了一些功能，重构了目录和网络请求部分
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

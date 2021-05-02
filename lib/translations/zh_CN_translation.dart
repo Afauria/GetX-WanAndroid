@@ -3,5 +3,6 @@ final Map<String, String> zhCN = {
   "home": "首页",
   "system": "体系",
   "project": "项目",
-  "mine": "我的"
+  "mine": "我的",
+  "navigation": "导航"
 };
