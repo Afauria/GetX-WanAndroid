@@ -7,7 +7,6 @@ class ProjectViewController extends GetxController {
   final _apiService = Get.find<ApiService>();
   final projectCategories = <ProjectData>[].obs;
   final articles = <ArticleData>[].obs;
-  final refreshData = false.obs;
   final Rx<ProjectData?> currentCategory = Rx<ProjectData?>(null);
 
   @override
@@ -20,7 +19,6 @@ class ProjectViewController extends GetxController {
     _apiService.getProjects().then((resp) {
       projectCategories.assignAll(resp.data!);
       currentCategory.value = projectCategories[0];
-      getProjectArticles(1, 0);
     }, onError: (e) {
       Get.snackbar("Error", e.toString());
     });
@@ -32,7 +30,8 @@ class ProjectViewController extends GetxController {
       projectCategories[index].children!.assignAll(resp.data!);
       //Obx响应式变量的某个属性改变，不会触发刷新
       //Obx只会监听数据变化，数据没变化的时候不会触发刷新，因此重新赋值projectCategories不会刷新页面
-      refreshData.value = !refreshData.value;
+      //使用update()通知GetBuilder局部刷新，不刷新整个Obx
+      update();
     }, onError: (e) {
       Get.snackbar("Error", e.toString());
     });
