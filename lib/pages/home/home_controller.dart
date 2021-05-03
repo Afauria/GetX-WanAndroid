@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/views/home/home_view.dart';
 import 'package:getx_sample/views/nav/nav_view.dart';
+import 'package:getx_sample/views/project/project_view.dart';
 import 'package:getx_sample/views/tree/tree_view.dart';
 
 ///GetController用于存放数据和控制逻辑
@@ -29,6 +30,6 @@ class HomeController extends GetxController{
     HomeView(),
     TreeView(),
     NavView(),
-    Container(color: Colors.blue),
+    ProjectView(),
   ];
 }

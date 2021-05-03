@@ -3,6 +3,7 @@ import 'package:getx_sample/model/BaseResponse.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/banner_data.dart';
 import 'package:getx_sample/model/data/nav_data.dart';
+import 'package:getx_sample/model/data/project_data.dart';
 import 'package:getx_sample/model/data/tree_data.dart';
 
 class ApiService extends GetConnect {
@@ -28,7 +29,14 @@ class ApiService extends GetConnect {
   Future<BaseResponse<List<TreeData>>> getTrees() async =>
       await requestGet('/tree/json', BaseResponse.listTree);
 
-
   Future<BaseResponse<List<NavData>>> getNavs() async =>
       await requestGet('/navi/json', BaseResponse.listNav);
+
+  Future<BaseResponse<List<ProjectData>>> getProjects() async =>
+      await requestGet('/project/tree/json', BaseResponse.listProject);
+
+  Future<BaseResponse<List<ArticleData>>> getProjectArticles(
+          int page, int category) async =>
+      await requestGet(
+          '/project/list/$page/json?cid=$category', BaseResponse.listArticle);
 }

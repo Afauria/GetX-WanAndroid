@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:getx_sample/pages/home/home_controller.dart';
 import 'package:getx_sample/views/home/home_view_controller.dart';
 import 'package:getx_sample/views/nav/nav_view_controller.dart';
+import 'package:getx_sample/views/project/project_view_controller.dart';
 import 'package:getx_sample/views/tree/tree_view_controller.dart';
 
 ///Bindings是一个依赖管理器
@@ -16,5 +17,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<HomeViewController>(() => HomeViewController());
     Get.lazyPut<TreeViewController>(() => TreeViewController());
     Get.lazyPut<NavViewController>(() => NavViewController());
+    Get.lazyPut<ProjectViewController>(() => ProjectViewController());
   }
 }

@@ -1,6 +1,7 @@
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/banner_data.dart';
 import 'package:getx_sample/model/data/nav_data.dart';
+import 'package:getx_sample/model/data/project_data.dart';
 import 'package:getx_sample/model/data/tree_data.dart';
 
 class BaseResponse<T> {
@@ -48,5 +49,12 @@ class BaseResponse<T> {
           map,
           (map["data"] as List<dynamic>)
               .map((item) => NavData.fromJson(item))
+              .toList());
+
+  static BaseResponse<List<ProjectData>> listProject(map) =>
+      BaseResponse.fromJson(
+          map,
+          (map["data"] as List<dynamic>)
+              .map((item) => ProjectData.fromJson(item))
               .toList());
 }

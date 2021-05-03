@@ -13,6 +13,7 @@ class HomeView extends GetView<HomeViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      ///SafeArea：适配刘海屏和底部导航栏。否则内容会被遮住
       body: SafeArea(
         ///使用Obx响应controller数据变化
         child: Obx(
