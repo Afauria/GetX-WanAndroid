@@ -36,7 +36,6 @@ class HomeViewController extends GetxController {
   }
 
   Future getArticles() async {
-    if ((page.value == 0) && (articles.isNotEmpty)) articles.clear();
     _apiService.getArticles(page.value).then((resp) {
       articles.addAll(resp.data!);
       page.value++;
@@ -47,6 +46,7 @@ class HomeViewController extends GetxController {
 
   Future<void> reset() async {
     page.value = 0;
+    articles.clear();
     await getArticles();
   }
 }

@@ -23,6 +23,7 @@ class ApiService extends GetConnect {
   Future<BaseResponse<List<ArticleData>>> getTops() async =>
       await requestGet('/article/top/json', BaseResponse.listTop);
 
+  //page从0开始
   Future<BaseResponse<List<ArticleData>>> getArticles(int page) async =>
       await requestGet('/article/list/$page/json', BaseResponse.listArticle);
 
@@ -35,6 +36,7 @@ class ApiService extends GetConnect {
   Future<BaseResponse<List<ProjectData>>> getProjects() async =>
       await requestGet('/project/tree/json', BaseResponse.listProject);
 
+  //page从1开始
   Future<BaseResponse<List<ArticleData>>> getProjectArticles(
           int page, int category) async =>
       await requestGet(

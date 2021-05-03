@@ -2,7 +2,9 @@
 
 GetX sample with wanandroid
 
-**基于GitHub项目学习：https://github.com/fengwensheng/getx_wanandroid.git**
+**基于[开源项目](https://github.com/fengwensheng/getx_wanandroid.git)学习**
+
+**感谢鸿洋大神的[WanAndroid Api](https://www.wanandroid.com/blog/show/2#47)**：
 
 补充了一些功能，重构了目录和网络请求部分
 

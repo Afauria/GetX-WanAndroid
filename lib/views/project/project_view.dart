@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/components/article_card.dart';
 import 'package:getx_sample/components/lazy_load_builder.dart';
+import 'package:getx_sample/components/space_header.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/project_data.dart';
 import 'package:getx_sample/views/project/project_view_controller.dart';
@@ -52,30 +53,37 @@ class ProjectView extends GetView<ProjectViewController> {
   }
 
   //问题：多个tab页使用TabView一次性请求完所有页面数据，没必要，且一次性请求多次接口，容易返回null
-  //解决：使用LazyLoaderBuilder实现懒加载，滑动到该页面的时候组件build，触发onBuild方法，调用网络请求。网络请求完成之后，调用update刷新GetBuilder布局
+  //解决1：使用LazyLoaderBuilder实现懒加载，滑动到该页面的时候组件build，触发onBuild方法，调用网络请求。网络请求完成之后，调用update刷新GetBuilder布局
   //解决2：也可以自定义StatefulWidget，网络请求之后刷新自身。需要传入controller
   Widget _buildProjectPage(ProjectData category, int index) {
     return GetBuilder(
         init: controller,
         builder: (_) {
           if (category.children!.isNotEmpty) {
-            return _buildProjectList(category, category.children!);
+            ///踩坑：ListView列表项滑出屏幕弹回来触发itemBuilder。由于下拉刷新的时候清空了列表，导致越界
+            ///解决：使用toList复制一份列表
+            ///home页数据没出现是因为Obx监听articles，articles清空之后触发布局刷新，此时ListView为空，不会触发itemBuilder。
+            ///因此home页下拉的时候ListView会闪一下空白
+            ///当前页面修改的是变量的children属性，不会触发Obx刷新。因此下拉刷新不会闪空白。
+            return _buildProjectList(index, category.children!.toList());
           }
           return LazyLoadBuilder(
-            onBuild: () => controller.getProjectArticles(1, index),
+            onBuild: () => controller.getProjectArticles(index),
           );
         });
   }
 
-  Widget _buildProjectList(ProjectData? category, List<ArticleData> articles) {
-    if (category == null) {
-      return Container(child: Text("project is null"));
-    }
+  Widget _buildProjectList(int index, List<ArticleData> articles) {
     final divider = Divider(height: 0, color: Colors.transparent);
-    return ListView.separated(
-      itemBuilder: (_, i) => ArticleCard(articles[i]),
-      separatorBuilder: (_, i) => divider,
-      itemCount: articles.length,
+    return EasyRefresh(
+      onRefresh: () => controller.reset(index),
+      onLoad: () => controller.loadMore(index),
+      header: SpaceHeader(),
+      child: ListView.separated(
+        itemCount: articles.length,
+        separatorBuilder: (_, i) => divider,
+        itemBuilder: (_, i) => ArticleCard(articles[i]),
+      ),
     );
   }
 }
