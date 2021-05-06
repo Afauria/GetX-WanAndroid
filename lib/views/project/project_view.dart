@@ -6,6 +6,7 @@ import 'package:getx_sample/components/lazy_load_builder.dart';
 import 'package:getx_sample/components/space_header.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 import 'package:getx_sample/model/data/project_data.dart';
+import 'package:getx_sample/routes/app_routes.dart';
 import 'package:getx_sample/views/project/project_view_controller.dart';
 
 class ProjectView extends GetView<ProjectViewController> {
@@ -82,7 +83,10 @@ class ProjectView extends GetView<ProjectViewController> {
       child: ListView.separated(
         itemCount: articles.length,
         separatorBuilder: (_, i) => divider,
-        itemBuilder: (_, i) => ArticleCard(articles[i]),
+        itemBuilder: (_, i) => ArticleCard(articles[i], () {
+          Get.toNamed(AppPages.PATH_ARTICLE_DETAIL,
+              arguments: articles[i].link);
+        }),
       ),
     );
   }

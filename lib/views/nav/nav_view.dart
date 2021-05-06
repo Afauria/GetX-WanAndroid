@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample/model/data/nav_data.dart';
+import 'package:getx_sample/routes/app_routes.dart';
 import 'package:getx_sample/views/nav/nav_view_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -65,16 +66,22 @@ class NavView extends GetView<NavViewController> {
         .map(
           (item) => Padding(
             padding: EdgeInsets.all(10.w),
-            child: DecoratedBox(
+            ///使用DecoratedBox+InkWell看不到点击效果，需要使用Ink组件
+            child: Ink(
               decoration: BoxDecoration(
-                  //背景渐变
-                  borderRadius: BorderRadius.circular(3.0),
+                  borderRadius: BorderRadius.circular(4.0),
                   color: Colors.grey[200]),
-              child: Padding(
-                padding: EdgeInsets.all(20.w),
-                child: Text(
-                  item.title!,
-                  style: TextStyle(color: _getRandomColor()),
+              child: InkWell(
+                onTap: () {
+                  Get.toNamed(AppPages.PATH_ARTICLE_DETAIL,
+                      arguments: item.link);
+                },
+                child: Padding(
+                  padding: EdgeInsets.all(20.w),
+                  child: Text(
+                    item.title!,
+                    style: TextStyle(color: _getRandomColor()),
+                  ),
                 ),
               ),
             ),

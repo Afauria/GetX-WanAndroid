@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:getx_sample/model/data/article_data.dart';
 
 class ArticleCard extends StatelessWidget {
-  ArticleCard(this.article);
+  ArticleCard(this.article, this.onTap);
 
   final ArticleData article;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,45 +18,55 @@ class ArticleCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.w)),
         ),
-        child: Container(
-          height: 340.w,
-          padding: EdgeInsets.all(20.w),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(
-                article.envelopePic!,
-                width: 180.w,
-                height: 300.w,
-                fit: BoxFit.fitWidth,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.all(20.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        article.title!,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 30.sp,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        article.desc!,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(article.niceDate! + " " + article.author!)
-                    ],
+        child: InkWell(
+          borderRadius: BorderRadius.all(Radius.circular(20.w)),
+          onTap: () {
+            onTap();
+          },
+          child: Container(
+            height: 340.w,
+            padding: EdgeInsets.all(20.w),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.network(
+                  article.envelopePic!,
+                  width: 180.w,
+                  height: 300.w,
+                  fit: BoxFit.fitWidth,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(20.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          article.title!,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: 30.sp,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          article.desc!,
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          article.niceDate! + " " + article.author!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

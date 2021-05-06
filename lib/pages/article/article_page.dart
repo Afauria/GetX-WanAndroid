@@ -13,8 +13,14 @@ class ArticlePage extends GetView<ArticleController> {
         onWebViewCreated: (_) => link != null
             ? Get.dialog(CupertinoActivityIndicator())
             : Get.snackbar("Error", "link url is null"),
-        onPageStarted: (_) {},
-        onPageFinished: (_) => Get.back(),
+        onPageStarted: (_) {
+        },
+        onPageFinished: (_) {
+          if ((Get.isDialogOpen != null && Get.isDialogOpen!) ||
+              (Get.isSnackbarOpen != null && Get.isSnackbarOpen!)) {
+            Get.back();
+          }
+        },
         initialUrl: link,
       ),
     );
