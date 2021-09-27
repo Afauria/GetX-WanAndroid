@@ -1,4 +1,4 @@
-# getx_sample
+# Getx_WanAndroird
 
 GetX sample with wanandroid
 
@@ -6,7 +6,7 @@ GetX sample with wanandroid
 
 **感谢鸿洋大神的[WanAndroid Api](https://www.wanandroid.com/blog/show/2)**
 
-补充了一些功能，重构了目录和网络请求部分
+主要用于学习GetX框架，FlutterUI等。补充了一些功能，重构了目录和网络请求部分
 
 # 效果图
 
